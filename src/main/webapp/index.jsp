@@ -12,6 +12,10 @@
     <form action="<%= request.getContextPath() %>/create" method="post">
         <table style="with: 80%">
             <tr>
+                <td>Course ID</td>
+                <td><input type="int" name="cID" /></td>
+            </tr>
+            <tr>
                 <td>Course Code</td>
                 <td><input type="text" name="courseCode" /></td>
             </tr>

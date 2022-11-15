@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+
 /**
  * registerEmployee -- > createCourses
  */
@@ -26,7 +27,7 @@ public class CourseDAO {
 
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-            preparedStatement.setInt(1, 100);
+            preparedStatement.setInt(1, course.getcID());
             preparedStatement.setString(2, course.getCourseCode());
             preparedStatement.setString(3, course.getTitle());
             preparedStatement.setString(4, course.getSemester());
@@ -40,8 +41,13 @@ public class CourseDAO {
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             result = preparedStatement.executeUpdate();
+//            preparedStatement.close();
+//            connection.close();
+//            System.out.println("result = preparedStatement.executeUpdate()    executed ");
+
 
         } catch (SQLException e) {
+            System.out.println("create course exception error");
             // process sql exception
             printSQLException(e);
         }

@@ -10,14 +10,20 @@ import java.io.Serializable;
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1;
+
+    private int cID;
     private String courseCode;
     private String title;
     private String semester;
     private String days;
+//    private int days;
+//    private String time;
     private String time;
     private String instructor;
     private String room;
+//    private String startDate;
     private String startDate;
+//    private String endDate;
     private String endDate;
 
     public String getCourseCode() {
@@ -91,4 +97,15 @@ public class Course implements Serializable {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
+
+    public int getcID() {
+
+        return cID;
+    }
+
+    public void setcID(int cID) {
+
+        this.cID = cID;
+    }
+
 }

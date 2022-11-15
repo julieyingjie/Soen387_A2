@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Time;
+import java.util.Date;
+import java.time.LocalTime;
 
 @WebServlet("/create")
 public class CourseServlet extends HttpServlet{
@@ -23,6 +26,7 @@ public class CourseServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        int cID = Integer.parseInt(request.getParameter("cID"));
         String courseCode = request.getParameter("courseCode");
         String title = request.getParameter("title");
         String semester = request.getParameter("semester");
@@ -33,13 +37,13 @@ public class CourseServlet extends HttpServlet{
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
 
-
         Course course = new Course();
+        course.setcID(cID);
         course.setCourseCode(courseCode);
         course.setTitle(title);
         course.setSemester(semester);
         course.setDays(days);
-        course.setTime(time);
+        course.setTime(time); // error in here
         course.setInstructor(instructor);
         course.setRoom(room);
         course.setStartDate(startDate);
@@ -51,7 +55,6 @@ public class CourseServlet extends HttpServlet{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         response.sendRedirect("courseDetail.jsp");
     }
 }
