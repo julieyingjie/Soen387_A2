@@ -2,10 +2,7 @@ package com.example.soen387_a2.Dao;
 
 import com.example.soen387_a2.Bean.Course;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 /**
@@ -35,8 +32,8 @@ public class CourseDAO {
             preparedStatement.setString(6, course.getTime());
             preparedStatement.setString(7, course.getInstructor());
             preparedStatement.setString(8, course.getRoom());
-            preparedStatement.setString(9, course.getStartDate());
-            preparedStatement.setString(10, course.getEndDate());
+            preparedStatement.setDate(9, (Date) course.getStartDate());
+            preparedStatement.setDate(10, (Date) course.getEndDate());
 
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query

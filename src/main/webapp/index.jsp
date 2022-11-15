@@ -45,11 +45,11 @@
             </tr>
             <tr>
                 <td>Start Date</td>
-                <td><input type="text" name="startDate" /></td>
+                <td><input type="date" name="startDate" /></td>
             </tr>
             <tr>
                 <td>End Date</td>
-                <td><input type="text" name="endDate" /></td>
+                <td><input type="date" name="endDate" /></td>
             </tr>
         </table>
         <input type="submit" value="Submit" />

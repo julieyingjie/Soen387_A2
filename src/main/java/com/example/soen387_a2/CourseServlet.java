@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.LocalTime;
 
@@ -34,8 +36,8 @@ public class CourseServlet extends HttpServlet{
         String time = request.getParameter("time");
         String instructor = request.getParameter("instructor");
         String room = request.getParameter("room");
-        String startDate = request.getParameter("startDate");
-        String endDate = request.getParameter("endDate");
+        Date startDate = java.sql.Date.valueOf(request.getParameter("startDate"));
+        Date endDate = java.sql.Date.valueOf(request.getParameter("endDate"));
 
         Course course = new Course();
         course.setcID(cID);

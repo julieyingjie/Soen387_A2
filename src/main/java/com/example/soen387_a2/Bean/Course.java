@@ -1,6 +1,7 @@
 package com.example.soen387_a2.Bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * JavaBean class used in jsp action tags.
@@ -22,9 +23,9 @@ public class Course implements Serializable {
     private String instructor;
     private String room;
 //    private String startDate;
-    private String startDate;
+    private Date startDate;
 //    private String endDate;
-    private String endDate;
+    private Date endDate;
 
     public String getCourseCode() {
         return courseCode;
@@ -82,19 +83,19 @@ public class Course implements Serializable {
         this.room = room;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
