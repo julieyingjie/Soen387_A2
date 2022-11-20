@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.courseselect.dao.IUserDao">
+    <select id="stuLogin" parameterType="String" resultType="user">
+        select *
+        from student
+        where BINARY sID = #{id}
+    </select>
+    <select id="adminLogin" parameterType="String" resultType="user">
+        select *
+        from administrator
+        where BINARY eID = #{id}
+    </select>
+    <select id="findCourseById" parameterType="String" resultType="course">
+        SELECT *
+        FROM course c
+        WHERE c.cID in (SELECT e.cID FROM enrolled e WHERE e.sID = #{sId});
+    </select>
+    <select id="findCourseByCId" parameterType="String" resultType="course">
+        SELECT *
+        FROM course
+        WHERE cID = #{cId};
+    </select>
+    <select id="findCourseBySemester" parameterType="String" resultType="course">
+        SELECT *
+        FROM course
+        WHERE semester = #{semester};
+    </select>
+    <delete id="deleteMyCourse" parameterType="String">
+        delete
+        from enrolled
+        where cID = #{cID}
+          and sID = #{sID};
+    </delete>
+    <insert id="selectCourse" parameterType="String">
+        insert into enrolled(`cID`, `sID`)
+        values (#{cID}, #{sID});
+    </insert>
+    <select id="viewStudentByCId" parameterType="String" resultType="user">
+        SELECT *
+        FROM student s
+        WHERE s.sID in (SELECT sID FROM enrolled WHERE cID = #{cID});
+    </select>
+    <select id="viewCourseBySId" parameterType="String" resultType="course">
+        SELECT *
+        FROM course c
+        WHERE c.cID in (SELECT cID FROM enrolled WHERE sID = #{sID});
+    </select>
+    <insert id="createNewCourse" parameterType="course" useGeneratedKeys="true" keyProperty="cID">
+        insert into course(`courseCode`, `title`, `semester`, `days`, `time`, `instructor`, `room`, `startDate`,
+                           `endDate`)
+        values (#{courseCode}, #{title}, #{semester}, #{days}, #{time}, #{instructor}, #{room}, #{startDate},
+                #{endDate});
+    </insert>
+    <select id="findSelectedCourse" parameterType="String" resultType="int">
+        SELECT count(*)
+        FROM enrolled
+        WHERE sID = #{sID};
+    </select>
+</mapper>
